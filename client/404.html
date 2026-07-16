@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Page Not Found — Sherman Nagel Adventist High School</title>
+  <title>Page Not Found - Sherman Nagel Adventist High School</title>
   <meta name="author" content="Sherman Nagel Adventist High School" />
-  <meta name="description" content="The page you are looking for could not be found on the Sherman Nagel Adventist High School Website." />
+  <meta name="description" content="The page you are looking for could not be found on the Sherman Nagel Adventist High School website." />
   <meta name="robots" content="noindex, follow" />
   <meta name="theme-color" content="#002366" />
   <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -20,37 +20,149 @@
     :root {
       --royal-blue: #002366;
       --royal-blue-dark: #001a4d;
-      --white: #FFFFFF;
+      --sky-blue-light: #d6effa;
+      --white: #ffffff;
+      --radius: 8px;
+      --shadow-md: 0 4px 24px rgba(0, 20, 60, 0.2);
     }
-    html, body { background: var(--royal-blue); }
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-      font-family: var(--font-body); font-weight: 600; font-size: 0.95rem;
-      padding: 10px 18px; border: none; border-radius: var(--radius);
-      cursor: pointer; transition: background 0.15s, opacity 0.15s; text-align: center;
+
+    * {
+      box-sizing: border-box;
     }
-    .btn-secondary { background: var(--sky-blue); color: #0d2647; }
-    .nf-wrap {
-      min-height: 100vh; min-height: 100dvh; display: grid; place-items: center;
-      padding: 24px; text-align: center; color: var(--white);
+
+    html,
+    body {
+      min-height: 100%;
+      margin: 0;
+      background: var(--royal-blue);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    .not-found {
+      width: 100%;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      color: var(--white);
+      text-align: center;
       background: linear-gradient(135deg, var(--royal-blue) 0%, var(--royal-blue-dark) 100%);
     }
-    .nf-wrap img { width: 8rem; height: 8rem; background: var(--white);
-      object-fit: cover; display: block; margin: 0 auto 20px; border-radius: 50%}
-    .nf-wrap h1 { color: var(--white); font-size: 3.5rem; margin-bottom: 4px; }
-    .nf-wrap h2 { color: var(--white); font-size: 1.3rem; margin-bottom: 10px; }
-    .nf-wrap p { opacity: 0.9; max-width: 420px; margin: 0 auto 24px; }
+
+    .not-found__content {
+      width: 100%;
+      max-width: 560px;
+    }
+
+    .not-found__crest {
+      width: 7rem;
+      height: 7rem;
+      display: block;
+      margin: 0 auto 22px;
+      border-radius: 50%;
+      background: var(--white);
+      object-fit: cover;
+    }
+
+    .not-found__code,
+    .not-found h1 {
+      font-family: 'Poppins', 'Inter', sans-serif;
+      color: var(--white);
+    }
+
+    .not-found__code {
+      margin: 0 0 2px;
+      font-size: 4.5rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .not-found h1 {
+      margin: 0 0 12px;
+      font-size: 1.75rem;
+      line-height: 1.25;
+    }
+
+    .not-found p {
+      max-width: 440px;
+      margin: 0 auto 28px;
+      font-size: 1rem;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+
+    .not-found__home {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 48px;
+      padding: 12px 22px;
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: var(--shadow-md);
+      color: var(--royal-blue);
+      font-size: 0.95rem;
+      font-weight: 600;
+      line-height: 1;
+      text-decoration: none;
+      transition: background-color 0.15s ease, transform 0.15s ease;
+    }
+
+    .not-found__home:hover {
+      background: var(--sky-blue-light);
+      transform: translateY(-1px);
+    }
+
+    .not-found__home:focus-visible {
+      outline: 3px solid var(--white);
+      outline-offset: 4px;
+    }
+
+    @media (max-width: 480px) {
+      .not-found {
+        padding: 20px;
+      }
+
+      .not-found__crest {
+        width: 5.5rem;
+        height: 5.5rem;
+        margin-bottom: 18px;
+      }
+
+      .not-found__code {
+        font-size: 3.75rem;
+      }
+
+      .not-found h1 {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .not-found__home {
+        transition: none;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="nf-wrap">
-    <div>
-      <img src="/SNAHS-logo.png" alt="SNAHS logo" />
-      <h1>404</h1>
-      <h2>Page Not Found</h2>
-      <p>The page you are looking for doesn't exist or may have been moved.</p>
-      <a class="btn btn-secondary" href="/index">← Back to home</a>
+  <main class="not-found">
+    <div class="not-found__content">
+      <img class="not-found__crest" src="/SNAHS-logo.png" alt="Sherman Nagel Adventist High School crest" />
+      <p class="not-found__code" aria-hidden="true">404</p>
+      <h1>Page Not Found</h1>
+      <p>The page you are looking for does not exist or may have been moved.</p>
+      <a class="not-found__home" href="/">
+        <span aria-hidden="true">&larr;</span>
+        <span>Back to home</span>
+      </a>
     </div>
-  </div>
+  </main>
 </body>
 </html>

@@ -1,27 +1,12 @@
-# Netlify config for the STANDALONE "coming soon" site that serves the bare
-# domain (shermannagel.sch.ng + www) while the full school website is built.
-#
-# This is a SEPARATE Netlify site from the result portal. Netlify serves the same
-# content to every domain on a site and cannot branch on hostname, so the bare
-# domain gets its own minimal site here; the portal site stays untouched and keeps
-# serving the app on portal.shermannagel.sch.ng.
-#
-# Deploy: new Netlify site → set "Base directory" / "Publish directory" to this
-# folder (coming-soon-site) → attach shermannagel.sch.ng and www as its domains.
 [build]
-  publish = "."
+  publish = "client"
   command = ""
 
-# Any path on the bare domain shows the coming-soon page (so a stray link like
-# /about or /contact doesn't 404 while the real website doesn't exist yet).
-# The logo is excluded so the <img> still resolves to the real file.
 [[redirects]]
-  from = "/*"
+  from = "/"
   to = "/index.html"
   status = 200
-  force = false
 
-# Security headers, mirroring the portal site's posture.
 [[headers]]
   for = "/*"
   [headers.values]
@@ -30,4 +15,19 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "geolocation=(), microphone=(), camera=()"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
-    Content-Security-Policy = "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+    Content-Security-Policy = "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' https://static.cloudflareinsights.com/beacon.min.js https://static.cloudflareinsights.com/beacon.min.js/; connect-src 'self' https://api.shermannagel.sch.ng; manifest-src 'self'; worker-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "no-cache"
