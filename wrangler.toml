@@ -1,0 +1,8 @@
+# Cloudflare Worker configuration for the public school website.
+name = "sherman-nagel-school-website"
+compatibility_date = "2026-07-18"
+
+[assets]
+directory = "./client"
+html_handling = "auto-trailing-slash"
+not_found_handling = "404-page"
