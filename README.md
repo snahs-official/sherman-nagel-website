@@ -53,5 +53,7 @@ Before enabling forms in production:
 
 1. Add both website origins to the API backend's `WEBSITE_URL` environment variable.
 2. Run `database/migration-2026-07-19-website-forms.sql` from the portal repository.
-3. Replace `[CLOUDFLARE_TURNSTILE_SITE_KEY]` and set the API's matching
+3. Set the API backend's matching `TURNSTILE_SITE_KEY` and
    `TURNSTILE_SECRET_KEY`, or leave both unset to run without Turnstile.
+
+The website obtains the public site key from `GET /api/website/config`.
