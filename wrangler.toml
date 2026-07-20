@@ -1,5 +1,5 @@
 # Cloudflare Worker configuration for the public school website.
-name = "sherman-nagel-school-website"
+name = "snahs-website"
 compatibility_date = "2026-07-18"
 
 [assets]
